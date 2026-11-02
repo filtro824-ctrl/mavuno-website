@@ -8,6 +8,7 @@ Abra `index.html` no navegador. Para desenvolvimento, pode usar a extensão Live
 ## Estrutura
 - `index.html` — conteúdo e secções do site
 - `download.html` — página independente para as opções oficiais de download
+- `community.html` — página independente para a comunidade Mavuno
 - `css/style.css` — identidade visual e layout responsivo
 - `js/script.js` — menu lateral e pequenas interações
 - `assets/` — imagens e ícones oficiais do projeto
