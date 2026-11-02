@@ -4,3 +4,142 @@
 @media(max-width:850px){.hero{min-height:760px;align-items:flex-start}.hero-copy{max-width:560px}.hero-art{width:48vw;right:4%;top:66%;opacity:.72}.hero h1{font-size:clamp(48px,10vw,76px)}.intro-grid,.plans-panel{grid-template-columns:1fr;gap:25px}.section-heading{display:block}.section-heading>p{margin-top:20px}.feature-grid{grid-template-columns:repeat(2,1fr)}.feature-large{grid-row:auto;min-height:300px}.feature-large h3{margin-top:90px}.plan-placeholder{min-height:250px}.community{grid-template-columns:180px 1fr}.community-symbol{font-size:145px}.news-card{grid-template-columns:1fr}.news-visual{min-height:220px}}
 @media(max-width:560px){.topbar{height:68px}.brand-mark{width:37px;height:37px;font-size:30px}.brand-name{font-size:16px}.section{padding:82px 22px}.hero{min-height:720px;padding-top:135px}.hero-copy>p{font-size:15px;max-width:390px}.hero-actions{align-items:stretch;flex-direction:column;max-width:280px}.hero-art{width:78vw;right:5%;top:72%;opacity:.52}.hero-tile{font-size:130px}.scroll-hint{left:22px;bottom:20px}.intro-grid{gap:25px}.feature-grid{grid-template-columns:1fr}.feature-card,.feature-large{min-height:220px}.feature-large h3{margin-top:75px}.plans-panel{padding:25px}.download-box{padding-left:22px}.download-actions{flex-direction:column;align-items:flex-start}.news-content{padding:28px}.community{grid-template-columns:1fr;gap:35px}.community-symbol{width:130px;font-size:105px}.community h2{font-size:39px}.footer{padding:55px 22px 22px}.footer-links{gap:25px;flex-wrap:wrap}.footer-bottom{flex-direction:column;line-height:1.8}.side-menu{padding:24px}.side-menu>a{padding:15px 2px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+/* Hero astronauta: camada de vidro e movimento interno */
+.hero-tile {
+  position: relative;
+  display: block;
+  padding: 0;
+  background: linear-gradient(145deg, rgba(155,255,220,.72), rgba(36,201,144,.48));
+  border: 1px solid rgba(230,255,246,.62);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+  box-shadow: 0 0 90px #27dca955, inset 0 3px 5px #fff8, inset 0 -18px 30px rgba(0,43,28,.28);
+}
+.hero-tile-viewport {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: inherit;
+}
+.hero-tile-letter {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  color: rgba(3,17,11,.43);
+  font-size: clamp(100px,17vw,190px);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -.18em;
+  padding-right: .1em;
+  text-shadow: 0 2px 4px rgba(255,255,255,.18);
+}
+.hero-astronaut {
+  position: absolute;
+  z-index: 2;
+  width: 57%;
+  height: auto;
+  left: 50%;
+  top: 51%;
+  transform: translate(-50%, -50%);
+  animation: astronaut-drift 3.2s ease-in-out infinite;
+  filter: drop-shadow(0 5px 8px rgba(0,30,20,.42));
+}
+.hero-tile::after {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background: linear-gradient(145deg, rgba(255,255,255,.22), transparent 34%, rgba(0,70,44,.14));
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.14), inset 0 -12px 18px rgba(0,50,32,.12);
+}
+@keyframes astronaut-drift {
+  0%,100% { transform: translate(-50%, -50%) translateY(0) rotate(-3deg); }
+  50% { transform: translate(-50%, -50%) translateY(-4px) rotate(3deg); }
+}
+
+/* Ponto luminoso a percorrer uma órbita elíptica inclinada */
+.orbit-dot {
+  top: 28.5%;
+  right: auto;
+  left: 2.5%;
+  width: 95%;
+  height: 43%;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow: none;
+  transform: rotate(-28deg);
+  animation: orbit-dot-spin 7s linear infinite;
+}
+.orbit-dot::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  right: 16%;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #baffea;
+  box-shadow: 0 0 10px #70e0b7, 0 0 24px #27dca9, 0 0 42px #27dca977;
+}
+.orbit-dot::after {
+  content: "";
+  position: absolute;
+  top: -2px;
+  right: calc(16% + 8px);
+  width: 34px;
+  height: 7px;
+  border-radius: 50%;
+  background: #70e0b788;
+  filter: blur(5px);
+  transform: rotate(-12deg);
+}
+@keyframes orbit-dot-spin {
+  from { transform: rotate(-28deg); }
+  to { transform: rotate(332deg); }
+}
+
+@media(max-width:560px) {
+  .hero {
+    flex-direction: column;
+    min-height: 1020px;
+  }
+  .hero-art {
+    position: relative;
+    width: min(100%, 360px);
+    right: auto;
+    top: auto;
+    transform: none;
+    margin: 38px auto 72px;
+    opacity: 1;
+    flex: 0 0 auto;
+  }
+  .hero-tile-letter { font-size: 130px; }
+  .hero-astronaut { width: 56%; }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  .hero-astronaut,
+  .orbit-dot { animation: none; }
+}
+
+@media (min-width:561px) and (max-width:850px) {
+  .hero {
+    flex-direction: column;
+    min-height: 1050px;
+  }
+  .hero-art {
+    position: relative;
+    width: min(100%, 520px);
+    right: auto;
+    top: auto;
+    transform: none;
+    margin: 42px auto 72px;
+    opacity: 1;
+    flex: 0 0 auto;
+  }
+}

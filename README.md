@@ -9,7 +9,9 @@ Abra `index.html` no navegador. Para desenvolvimento, pode usar a extensão Live
 - `index.html` — conteúdo e secções do site
 - `css/style.css` — identidade visual e layout responsivo
 - `js/script.js` — menu lateral e pequenas interações
-- `assets/` — espaço para logótipo, imagens e ícones oficiais
+- `assets/` — imagens e ícones oficiais do projeto
+  - `astronaut.webp` — mascote usada dentro do logo flutuante do hero
+  - `brand/astronaut-jump-original.png` — recurso original recebido para referência da mascote
 
 ## Antes de publicar
 Substituir os textos provisórios e adicionar:
